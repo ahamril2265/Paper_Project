@@ -1,0 +1,7 @@
+## Training Configuration
+
+* **Framework:** PyTorch (CPU) — chosen over TensorFlow/Keras for direct control over the training loop, which makes it straightforward to log per-epoch train/validation loss for the Phase 8 learning-curve plot.
+* **Device:** CPU. Given the resampled hourly dataset (~12k training sequences) and the modest architecture (Phase 6 → `architecture_design.md`), GPU acceleration is not required to complete training in a reasonable time, consistent with the Phase 1 hardware-constraint assumption.
+* **Data loading:** Sequences are pre-computed as NumPy arrays during preprocessing (Phase 4) and wrapped in a PyTorch `Dataset`/`DataLoader` with `shuffle=True` for the training loader only — shuffling batches (not the underlying chronological split) is standard practice and does not violate the no-leakage rule established in Phase 4, since it happens strictly after the windows are formed from data already confined to the train split.
+* **Early stopping:** Validation loss is tracked every epoch; training halts if it fails to improve for 8 consecutive epochs, and the best-performing model checkpoint (lowest validation loss) is restored before Phase 8 evaluation.
+* **Artifacts saved:** trained model weights, the fitted scaler, per-epoch loss history, and final predictions on the test split — all written to `results/` for Phase 8 to consume directly, so the reported numbers are never manually re-derived.

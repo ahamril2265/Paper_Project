@@ -1,0 +1,5 @@
+## Dataset Overview
+
+This study evaluates multiple datasets for the task of short-term residential electricity consumption forecasting. The primary requirement for dataset selection is the availability of time-stamped electricity consumption data with sufficient temporal resolution, feature diversity, and historical depth to support supervised deep learning models.
+
+Two candidate datasets were initially considered. Dataset A consists of daily electricity consumption values combined with weather-related variables such as wind speed and temperature. Dataset B contains high-resolution smart meter measurements recorded at minute-level intervals, including global power metrics and appliance-level sub-metering data. Both datasets were assessed based on size, sampling frequency, feature relevance, and suitability for modeling temporal dependencies.

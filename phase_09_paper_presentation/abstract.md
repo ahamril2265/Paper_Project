@@ -1,0 +1,11 @@
+## Abstract
+
+*(Final text as submitted to ICCMI 2026 — see `Abstracts/Predictive Analysis of Power Consumption in Residential Buildings.docx` and `Abstracts/Abstract_submission.pdf` for the formatted conference version.)*
+
+**Predictive Analysis of Power Consumption in Residential Buildings Using Deep Learning**
+
+Ahamed Rilwan Mohaaideen H¹, Guhankarthik A G², Marudhachalam R³
+
+Accurate short-term forecasting of residential electricity consumption is essential for efficient energy management, demand response planning, and reliable operation of modern power systems. The increasing deployment of smart meters has enabled the collection of high-resolution electrical consumption data, creating opportunities for advanced data-driven prediction techniques. This paper addresses the problem of short-term residential load forecasting using supervised deep learning models applied to smart meter data. The study employs a large-scale multivariate time-series dataset comprising over one million minute-level observations, including global active power, global reactive power, voltage, current intensity, and appliance-level sub-metering measurements. A systematic preprocessing pipeline is designed to handle missing values, normalize features, and transform the time-series data into supervised learning sequences. A Long Short-Term Memory (LSTM) neural network is then developed to capture temporal dependencies and non-linear relationships inherent in residential electricity consumption patterns. The proposed model is trained to predict global active power consumption over short-term horizons and evaluated using Mean Absolute Error (MAE), Root Mean Square Error (RMSE), and the coefficient of determination (R²). The results demonstrate that the LSTM-based approach achieves accurate short-term power consumption predictions and effectively models residential load dynamics. The findings confirm the suitability of deep learning techniques for smart meter data analysis and highlight their potential application in intelligent energy management systems and demand-side planning for residential buildings.
+
+**Keywords:** Residential Load Forecasting, Smart Meter Data, LSTM, Time-Series Prediction, Energy Management.

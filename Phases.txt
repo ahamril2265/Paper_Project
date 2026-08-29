@@ -1,0 +1,178 @@
+📊 Project Phases – Predictive Analysis of Residential Power Consumption
+Status: All 10 phases complete.
+
+🧱 Phase 01 – Problem Definition
+
+Goal: Clearly define what you are solving.
+
+Define research problem
+
+Define forecasting horizon (e.g., next 1 hour)
+
+Define prediction target
+
+Define scope and limitations
+
+State objectives
+
+✔ Already completed.
+
+🧱 Phase 02 – Dataset Selection & Justification
+
+Goal: Choose the correct dataset and justify it.
+
+Compare Dataset A vs Dataset B
+
+Select Dataset B
+
+Document rejection rationale
+
+Define dataset metadata
+
+✔ Completed.
+
+🧱 Phase 02.5 – Dataset Validation & EDA
+
+Goal: Test the dataset before designing anything.
+
+Data integrity check
+
+Missing value analysis
+
+Temporal consistency check
+
+Statistical summary
+
+Basic visualization
+
+Initial correlations
+
+✔ Completed.
+
+🧱 Phase 03 – Data Understanding & Feature Interpretation
+
+Goal: Understand what each feature means physically and statistically.
+
+Interpret each feature
+
+Confirm target variable
+
+Document consumption patterns
+
+Confirm suitability for time-series modeling
+
+✔ Completed (updated with EDA findings).
+
+🧱 Phase 04 – Preprocessing & Feature Engineering Design
+
+Goal: Design how raw data becomes model-ready.
+
+Missing value handling strategy
+
+Scaling/normalization choice
+
+Time feature extraction (hour, day)
+
+Sequence/window size selection
+
+Train-test split strategy (time-based)
+
+✔ Completed. Implemented in src/preprocess.py.
+
+🧱 Phase 05 – Model Selection Design
+
+Goal: Justify model choice.
+
+Compare RF, XGBoost, LSTM
+
+Justify LSTM
+
+Define baseline model
+
+Document reasoning
+
+✔ Completed. Naive persistence + Random Forest baselines implemented in src/train.py.
+
+🧱 Phase 06 – Model Architecture Design
+
+Goal: Define the LSTM structure.
+
+Number of layers
+
+Number of neurons
+
+Activation functions
+
+Loss function
+
+Optimizer
+
+Regularization (Dropout)
+
+✔ Completed. Implemented in src/models.py (LSTMForecaster).
+
+🧱 Phase 07 – Training & Evaluation Design
+
+Goal: Define how performance is measured.
+
+Evaluation metrics (MAE, RMSE, R²)
+
+Validation strategy
+
+Overfitting prevention
+
+Early stopping
+
+Performance logging
+
+✔ Completed. Implemented in src/train.py.
+
+🧱 Phase 08 – Results & Analysis
+
+Goal: Interpret results scientifically.
+
+Actual vs predicted plots
+
+Error comparison
+
+Baseline comparison
+
+Error analysis
+
+Performance discussion
+
+✔ Completed. LSTM MAE=0.368kW / RMSE=0.545kW / R²=0.656 vs Random Forest MAE=0.390 / naive persistence MAE=0.456 — see results/ and phase_08_results_analysis/.
+
+🧱 Phase 09 – Conclusion & Future Work
+
+Goal: Summarize and position the work.
+
+Key findings
+
+Limitations
+
+Future improvements
+
+Real-world applicability
+
+✔ Completed. See phase_09_paper_presentation/paper_draft.md (Section 7).
+
+🧱 Phase 10 – Paper & Presentation Preparation
+
+Goal: Convert work into conference material.
+
+Abstract
+
+Paper formatting
+
+Slide deck
+
+Q&A preparation
+
+Defense preparation
+
+✔ Completed. Abstract submitted to ICCMI 2026 (Abstracts/); full paper draft, slide outline, and Q&A prep in phase_09_paper_presentation/.
+
+---
+
+All 10 phases complete. Authors: Ahamed Rilwan Mohaaideen H, Guhankarthik A G, Marudhachalam R (Kumaraguru College of Technology).
