@@ -1,4 +1,14 @@
-## Abstract
+## Revised Abstract (comparative-study framing — for the full paper)
+
+**Predictive Analysis of Power Consumption in Residential Buildings: A Comparative Study of Deep Sequence Models and Tree Ensembles**
+
+Accurate short-term forecasting of residential electricity consumption supports demand-side management and reliable grid operation. Deep sequence models such as Long Short-Term Memory (LSTM) networks are widely used for this task, but they are often evaluated only against weak baselines. This paper presents a controlled comparison of naive persistence, Random Forest, gradient boosting and a stacked LSTM for next-hour load forecasting. It uses over one million minute-level smart-meter observations from a single household, resampled to hourly resolution. All models receive an identical 24-hour multivariate window and are evaluated on a leakage-free chronological split. Each learned model is trained with five random seeds. Differences are assessed with Diebold-Mariano tests, and training cost and errors by consumption regime are reported. Gradient boosting achieved the best accuracy (MAE 0.359 kW, RMSE 0.524 kW, R² 0.682). It was significantly better than the LSTM on every seed (p < 0.01) and trained about 86 times faster. The LSTM (MAE 0.372 kW, R² 0.653) outperformed Random Forest on average, but not consistently significantly. All learned models underestimated peak demand by about 0.45 kW. This indicates that peak events, rather than model family, are the main remaining source of error. The results suggest that gradient-boosted models on windowed features are a strong, low-cost default for household-level forecasting, and that deep sequence models should be justified against them.
+
+**Keywords:** Residential Load Forecasting, Smart Meter Data, LSTM, Gradient Boosting, Comparative Study, Diebold-Mariano Test.
+
+---
+
+## Abstract (as submitted)
 
 *(Final text as submitted to ICCMI 2026 — see `Abstracts/Predictive Analysis of Power Consumption in Residential Buildings.docx` and `Abstracts/Abstract_submission.pdf` for the formatted conference version.)*
 

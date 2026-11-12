@@ -15,8 +15,14 @@ A: No — this is explicitly out of scope (Phase 1 → `scope_and_constraints.md
 **Q: What happens to accuracy during unusual events (holidays, appliance failure, etc.)?**
 A: Not explicitly modeled — noted as a limitation in Phase 8 (`limitations.md`). The model is a statistical pattern-learner, not an anomaly-aware system.
 
-**Q: Your LSTM only beats Random Forest by ~5.6% MAE — is the extra complexity actually justified?**
-A: This is answered directly rather than glossed over (`phase_08_results_analysis/results_summary.md`, `performance_analysis.md`): the LSTM's advantage is concentrated in steady-state hours, and both models underestimate peaks by a similar margin. For a production system where simplicity and training cost matter, Random Forest is a legitimate, nearly-as-accurate choice — the paper reports this honestly rather than overstating the deep-learning result.
+**Q: Your title talks about deep learning, but gradient boosting won. Isn't that a negative result?**
+A: It's the central finding, not a failure. The study tests whether deep sequence models are justified for single-household, next-hour forecasting when compared against strong baselines on identical inputs. Under that test, they aren't. Gradient boosting is more accurate on every seed (Diebold-Mariano p < 0.01) and about 86× cheaper to train. That is useful to practitioners, and it is often missing from LSTM papers that compare only against naive or ARIMA baselines.
 
-**Q: Why Random Forest and not XGBoost/gradient boosting as the second baseline?**
-A: Random Forest was chosen for its strong out-of-the-box compatibility with `scikit-learn` here without extra tuning, and because the comparison's purpose (Phase 5) is to test "does explicit temporal recurrence matter at all," not to find the best possible non-sequential model. Gradient boosting is a reasonable additional baseline for future work.
+**Q: Maybe the LSTM just wasn't tuned enough?**
+A: That's possible, and it's stated as a limitation. Neither the LSTM nor gradient boosting received an extensive search; both used one reasonable configuration. The LSTM also has the largest seed variance (MAE std 0.009 vs ≤ 0.001), so its results are less stable regardless of tuning. A fair future study would tune all model families with equal budget.
+
+**Q: When *would* you expect the LSTM to win?**
+A: With much more data (multi-household training), longer lookback windows where flattening the window becomes impractical for trees, or multi-step horizons. None of these was tested here.
+
+**Q: Why does no model handle peaks well?**
+A: All learned models undershoot peak hours by about 0.45 kW. Training on MSE rewards predictions near the mean, and spikes driven by appliances are short and intermittent. Peak-aware losses such as quantile/pinball loss, or a separate peak classifier, are the natural next step.

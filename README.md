@@ -7,17 +7,18 @@ Abstract submitted to ICCMI 2026 (see `Abstracts/`).
 
 **Status: All 10 phases complete** — problem definition through full paper draft (see `Phases.txt`).
 
-Short-term (next-hour) forecasting of residential electricity demand from smart-meter data, using an LSTM trained against two baselines (naive persistence, Random Forest), on the UCI *Individual Household Electric Power Consumption* dataset (1,048,575 minute-level records).
+A comparative study of short-term (next-hour) residential load forecasting from smart-meter data. It compares naive persistence, Random Forest, gradient boosting and a stacked LSTM on the UCI *Individual Household Electric Power Consumption* dataset (1,048,575 minute-level records).
 
-## Final Results (test set)
+## Final Results (test set, mean ± std over 5 seeds)
 
-| Model | MAE (kW) | RMSE (kW) | R² |
-|---|---|---|---|
-| Naive Persistence | 0.456 | 0.702 | 0.429 |
-| Random Forest | 0.390 | 0.556 | 0.641 |
-| **LSTM** | **0.368** | **0.545** | **0.656** |
+| Model | MAE (kW) | RMSE (kW) | R² | Train time (s) |
+|---|---|---|---|---|
+| Naive Persistence | 0.456 | 0.702 | 0.429 | — |
+| Random Forest | 0.391 ± 0.001 | 0.557 ± 0.001 | 0.641 ± 0.001 | 7.1 |
+| **Gradient Boosting** | **0.359 ± 0.000** | **0.524 ± 0.000** | **0.682 ± 0.000** | **0.8** |
+| LSTM | 0.372 ± 0.009 | 0.548 ± 0.007 | 0.653 ± 0.009 | 65.8 |
 
-The LSTM outperforms both baselines on every metric. Full breakdown (including a steady-state vs. peak-hour regime analysis) in `phase_08_results_analysis/`.
+Gradient boosting is significantly better than the LSTM on all 5 seeds (Diebold-Mariano test, p < 0.01) and trains about 86× faster. All learned models underestimate peak demand by about 0.45 kW. Details are in `phase_08_results_analysis/robustness_analysis.md`.
 
 ## Project Structure
 
@@ -42,6 +43,7 @@ The work is organized as a 10-phase research pipeline, one folder per phase:
 * `src/models.py` — the Phase 6 `LSTMForecaster` (PyTorch)
 * `src/train.py` — trains the naive persistence baseline, Random Forest, and LSTM; writes all results to `results/`
 * `src/make_plots.py` — generates the loss curve, actual-vs-predicted, and baseline-comparison plots from `results/`
+* `src/experiments.py` — 5-seed runs of Random Forest, gradient boosting, and LSTM with timing and Diebold-Mariano tests; writes `results/robustness.json`
 
 ## Reproducing the Results
 
@@ -49,6 +51,7 @@ The work is organized as a 10-phase research pipeline, one folder per phase:
 cd src
 ../.venv/Scripts/python.exe train.py       # trains all 3 models, writes results/
 ../.venv/Scripts/python.exe make_plots.py  # generates plots from results/
+../.venv/Scripts/python.exe experiments.py # multi-seed comparison + significance tests
 ```
 
 `results/metrics.json` holds the MAE/RMSE/R² for all three models; see `phase_08_results_analysis/results_summary.md` for the write-up.

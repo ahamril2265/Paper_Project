@@ -1,5 +1,7 @@
 ## Results Summary
 
+> **Superseded.** This page reports the original single-seed, three-model run. The final results are the 5-seed comparison that adds gradient boosting, in `robustness_analysis.md`. In that comparison, gradient boosting is the best model and the LSTM is second. The text below is kept as a record of the original run.
+
 Final test-set metrics (computed once, on the held-out chronological test split, in original kW units — see Phase 7 → `evaluation_metrics.md`):
 
 | Model | MAE (kW) | RMSE (kW) | R² |
